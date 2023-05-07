@@ -1,15 +1,15 @@
 rm(list = ls())
 library(MASS)
-
+set.seed(12345)
 # number of indivduals
 nsample <- 500
 # real values of parameters
 mu <- rep(0, 2)
 rho <- 0.5
 Sigma <- matrix(c(1, rho, rho, 1), 2, 2)
-gamma <- 0.5
+gamma <- -0.5
 Beta <- c(0.5, -0.5, 1, 1)
-sigma <- 0.4
+sigma <- 1
 alpha <- c(1, 2)
 # observed times for longitudinal marker
 t <- seq(from = 0, to = 2.0, by = 0.1)
@@ -92,5 +92,5 @@ long.data <- na.omit(long.data)
 head(long.data)
 head(surv.data)
 
-save(long.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/new_codes/long.data_1.RData")
-save(surv.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/new_codes/surv.data_1.RData")
+save(long.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/long.data_1.RData")
+save(surv.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/surv.data_1.RData")
