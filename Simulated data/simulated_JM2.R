@@ -11,7 +11,7 @@ gamma <- -0.5
 rho <- .5
 Sigma <- matrix(c(1, rho, rho, 1), 2, 2)
 
-
+set.seed(12345)
 # gap between longitudinal measurements
 gapLongi <- 0.2
 gap <- 0.1
@@ -67,5 +67,6 @@ head(long.data)
 head(surv.data)
 
 
-save(long.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/new_codes/long.data_2.RData")
-save(surv.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/new_codes/surv.data_2.RData")
+save(long.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/long.data_2.RData")
+save(surv.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/surv.data_2.RData")
+
