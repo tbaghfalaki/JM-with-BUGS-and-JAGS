@@ -32,19 +32,6 @@ X[, , 4] <- X2
 Z <- array(1, dim = c(n, max(M), 2)) # Random effects
 Z[, , 2] <- time
 
-d.jags <- list(
-  n = n, M = M, st = st, W = W, Y = Y, X = X, Z = Z, X1 = X1, X2 = X2,
-  death = death, mub = rep(0, 2), V = diag(1, 2), Nb = 2, zeros = rep(0, n),
-  Nbeta = dim(X)[3], Nalpha = ncol(W)
-)
-
-i.jags <- function() {
-  list(
-    alpha = rnorm(ncol(W)), gamma = rnorm(1),
-    beta = rnorm(dim(X)[3]), tau = runif(1), Omega = diag(runif(2))
-  )
-}
-parameters <- c("alpha", "gamma", "beta", "sigma", "Sigma", "lambda0")
 
 ########  BUGS code  ########
 sink("model_file")
@@ -89,6 +76,20 @@ cat("model{
 }", fill = TRUE)
 sink()
 #### Running JAGS
+d.jags <- list(
+  n = n, M = M, st = st, W = W, Y = Y, X = X, Z = Z, X1 = X1, X2 = X2,
+  death = death, mub = rep(0, 2), V = diag(1, 2), Nb = 2, zeros = rep(0, n),
+  Nbeta = dim(X)[3], Nalpha = ncol(W)
+)
+
+i.jags <- function() {
+  list(
+    alpha = rnorm(ncol(W)), gamma = rnorm(1),
+    beta = rnorm(dim(X)[3]), tau = runif(1), Omega = diag(runif(2))
+  )
+}
+parameters <- c("alpha", "gamma", "beta", "sigma", "Sigma", "lambda0")
+
 sim <- jags(
   data = d.jags, inits = i.jags, parameters,
   n.iter = 5000, model.file = "model_file"
