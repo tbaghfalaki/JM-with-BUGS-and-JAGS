@@ -1,114 +1,93 @@
-rm(list = ls())
-library(MASS)
-# Random number generation
-set.seed(12345)
-# number of indivduals
-nsample <- 500
-# real values of parameters
-mu <- rep(0, 2)
-rho <- 0.5
-D <- matrix(c(1, rho, rho, 1), 2, 2)
-gamma <- -0.5
-Beta <- c(-0.5, 0.5, 0.5, 0.5)
-sigma <- 1
-alpha <- 1
-# observed times for longitudinal marker
-t <- seq(from = 0, to = 2.0, by = 0.2)
+  rm(list = ls())
+  library(PermAlgo)
+  library(mvtnorm)
+  nsample <- 100 # number of indivduals
+  # real values of parameters
+  gamma <- -0.5
+  Beta <- c(-0.5, 0.5, 0.5, 0.5)
+  sigma <- 1
+  alpha <- 1
+  rho <- 0.5
+  Sigma <- matrix(c(1, rho, rho, 1), 2, 2)
+  
+  set.seed(12345)
+  # gap between longitudinal measurements
+  gapLongi <- 0.2
+  gap <- 0.1
+  # observed times for longitudinal marker
+  followup <- 2
+  t <- seq(from = 0, to = followup, by = gap)
+  timesLongi <- t[which(round(t - round(t / gapLongi, 0) * gapLongi, 6) == 0)] # visit times
+  time <- rep(t, nsample)
+  # max. number of individual measurements
+  nmesindiv <- followup / gap + 1
+  # max. total number of longitudinal measurements
+  nmesy <- nmesindiv * nsample
+  #  individual id for longitudinal
+  idY <- rep(1:nsample, each = nmesindiv)
+  
+  ###############
+  
+  b <- rmvnorm(nsample, rep(0, 2), Sigma)
+  b1 <- rep(b[, 1], each = nmesindiv) # random intercept Y1
+  b2 <- rep(b[, 2], each = nmesindiv) # random slope Y1
+  
+  x1 <- rnorm(nsample, 0, 1)
+  x2 <- rbinom(nsample, 1, 0.5)
+  X1 <- rep(x1, each = nmesindiv)
+  X2 <- rep(x2, each = nmesindiv)
+  w <- rnorm(nsample, 0, 1)
+  W<- rep(w, each = nmesindiv)
+  
+  # linear predictor
+  eta <- (Beta[1] + b1) + (Beta[2] + b2) * time + Beta[3] * X1 + Beta[4] * X2
+  
+  Y1 <- rnorm(nmesy, eta, sigma)
+  # Permutation algorithm to generate survival times
+  Data_permu <- permalgorithm(nsample, nmesindiv,
+    Xmat = cbind(eta,W),
+    eventRandom = round(rexp(nsample, 0.2) + 1, 0),
+    censorRandom = runif(nsample, 1, nmesindiv),
+    XmatNames = c("eta","W"),
+    betas = c(gamma,alpha)
+  )
 
-p <- 1
-C <- rep(NA, nsample)
-x1 <- x2 <- w1 <- rep(NA, nsample)
-death <- rep(0, nsample) # 1=observed, 0=censored
-Y1 <- matrix(NA, ncol = length(t), nrow = nsample)
-time <- rep(NA, nsample)
-id <- rep(NA, nsample)
-ct <- rep(NA, nsample)
-mat <- matrix(NA, ncol = 7, nrow = nsample * length(t))
-evtim <- td <- rep(0,nsample)
-u <- matrix(0, nsample, 2)
-A0 <- A1 <- c()
-for (i in 1:nsample) {
-  x1[i] <- rbinom(1, 1, 0.6)
-  x2[i] <- rnorm(1)
-  w1[i] <- rnorm(1)
-  
-  u[i, ] <- mvrnorm(1, mu, D)
-  Alpha1 <- gamma * (Beta[2] + u[i, 2])
-  Alpha0 <-  alpha * w1[i] + gamma * (Beta[1] + Beta[3] * x1[i] + Beta[4] * x2[i] + u[i, 1])
-  
-  
-  td[i] <- rexp(1, 2)
-  
-  for (j in 1:length(t)) {
-    Y1[i, j] <- Beta[1] + Beta[2] * t[j] + Beta[3] * x1[i] + Beta[4] * x2[i] + u[i, 1] + u[i, 2] * t[j] + rnorm(1, 0, sigma)
-  }
-  
-  lambda0 <- 1
-  temp <- (Alpha1 * (-log(runif(1, min = 0, max = 1))) / lambda0 + exp(Alpha0))
-  if(temp>0){
-    evtim[i] <- (log(temp) - Alpha0) / Alpha1
-    time[i] <- min(evtim[i], td[i])
-    if (time[i] >= 2) {
-      time[i]=2
-    } else {
-      death[i] <- 1
-    }
-  }else{
-    time[i]=2 
-    death[i] <- 0
-  }
-  
-  for (j in 1:length(t)) {
-    if (time[i] < t[j]) {
-      Y1[i, j] <- NA
-    }
-  }
-  ct[i] <- length(Y1[i, ][is.na(Y1[i, ]) == FALSE])
-  id[i] <- i
-  jk <- 1
-  for (jj in p:(ct[i] + p - 1)) {
-    mat[jj, 1] <- t[jk]
-    mat[jj, 2] <- i
-    mat[jj, 3] <- x1[i]
-    mat[jj, 4] <- x2[i]
-    mat[jj, 5] <- death[i]
-    mat[jj, 6] <- time[i]
-    mat[jj, 7] <- Y1[i, jk]
-    
-    jk <- jk + 1
-  }
-  p <- p + ct[i]
-}
-# 1 - sum(death) / nsample # censoring rate
-colnames(mat) <- c("obstime", "id", "x1", "x2", "death", "survtime", "Y1")
-####### $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-surv.data <- data.frame(id)
-surv.data$id <- id
-surv.data$w1 <- w1
-surv.data$survtime <- time
-surv.data$death <- death
-long.data <- data.frame(mat)
-long.data <- na.omit(long.data)
+# extract last line for each id (= death/censoring time)
+Data_permu2 <- Data_permu[c(which(diff(Data_permu[, "Id"]) == 1), dim(Data_permu)[1]), c("Id", "Event", "Stop")]
+Data_permu2$survtime <- t[Data_permu2$Stop + 1] # survtime
+surv.data <- Data_permu2[, c("Id", "survtime", "Event")]
+surv.data$w <- w
+Data_permu$time <- t[Data_permu$Start + 1] # measurements times of the biomarker
+Data_permu$Uid <- paste(Data_permu$Id, Data_permu$time) # unique identifier to match covariates and observed biomarker values
+long.data3 <- merge(Data_permu[, c("Uid", "Id", "time")], cbind("Uid" = paste(idY, time), X1, X2, Y1), by = c("Uid"))
+long.data <- sapply(long.data3[long.data3$time %in% timesLongi, -1], as.numeric)
+long.data <- as.data.frame(long.data[order(long.data[, "Id"], long.data[, "time"]), ])
+colnames(long.data) <- c("id", "obstime", "x1", "x2", "Y1")
+colnames(surv.data) <- c("id", "survtime", "death", "w")
+
 head(long.data)
 head(surv.data)
 
-save(long.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/long.data_1.RData")
-save(surv.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/surv.data_1.RData")
+
+save(long.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/long.data_2.RData")
+save(surv.data, file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/surv.data_2.RData")
+
+
 
 library(ggplot2)
-p1=ggplot(data = long.data, aes(x = obstime, y = Y1, group = id)) +  
-  geom_line()+xlab("")+stat_smooth(aes(group = 1), method = "lm")+ylab("Y")
+p1 <- ggplot(data = long.data, aes(x = obstime, y = Y1, group = id)) +
+  geom_line() +
+  xlab("") +
+  stat_smooth(aes(group = 1), method = "lm") +
+  ylab("Y")
 
 
 library(ggfortify)
-km_fit <- survfit(Surv(survtime, death) ~ 1, data=surv.data)
-p2=autoplot(km_fit)
+km_fit <- survfit(Surv(survtime, death) ~ 1, data = surv.data)
+p2 <- autoplot(km_fit)
 
 library(gridExtra)
 library(grid)
 grid.arrange(p1, p2,
-             ncol=2, nrow = 1)
-
-
-
-
+  ncol = 2, nrow = 1
+)
