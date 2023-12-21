@@ -1,3 +1,35 @@
-# JM-with-BUGS-and-JAGS
-## Joint modeling of longitudinal and time to event with BUGS
-BUGS syntax using R2OpenBUGS or R2jags is  an attractive and flexible tool for joint modeling of longitudinal markers and survival time. Here, we have discussed "Joint modeling of longitudinal and time to event with BUGS", which includes different types of longitudinal markers or multiple longitudinal markers as longitudinal sub-models and a Cox model with different forms of baseline hazard or an accelerated failure time model for the survival sub-model. In addition to these, a competing risk model is also discussed. Also, different forms of association between two sub-models have been explained. The paper of this work, entitled "Joint modeling of longitudinal and time to event with BUGS", has been submitted by Taban Baghfalaki, Mojtaba Ganjali, Antoine Barbieri, Reza Hashemi and Helene Jacqmin-Gadda.
+# GCPBayes package
+
+
+> Run a Gibbs sampler for a multivariate Bayesian sparse group selection model with Dirac, continues and hierarchical spike prior for detecting pleiotropic effects on two traits. This package is designed for summary statistics containing estimated regression coefficients and its estimated covariance matrix.
+
+> Here we provide a comprehensible detailed vignette to run Bayesian meta-analysis models using GCPBayes package.
+
+> We illustrate the inference by some simulated summary statistics.
+
+> This vignette can reproduces a part of the simulation study of our submitted paper entitled as follows:
+
+  > Bayesian meta-analysis models to Cross Cancer Genomic Investigation of pleiotropic effects using group structure. 
+
+
+
+**Getting Started**
+
+  > In this vignette we used the following R packages
+- library(MASS)
+- library(mvtnorm)
+- library(invgamma)
+- library(wiqid)
+- library(gdata)
+- library(truncnorm)
+- library(bayesplot)
+- library(abind)
+- library(magrittr)
+
+
+**Example Usage**
+  > Examples from the GCPaBayes can be found in the following:
+
+- CS: This analysis is presented [here](/CSExamp.md)
+- DS: This analysis is presented [here](/DSExamp.md)
+- HS: This analysis is presented [here](/HSExamp.md)
