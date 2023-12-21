@@ -1,35 +1,5 @@
-# GCPBayes package
 
-
-> Run a Gibbs sampler for a multivariate Bayesian sparse group selection model with Dirac, continues and hierarchical spike prior for detecting pleiotropic effects on two traits. This package is designed for summary statistics containing estimated regression coefficients and its estimated covariance matrix.
-
-> Here we provide a comprehensible detailed vignette to run Bayesian meta-analysis models using GCPBayes package.
-
-> We illustrate the inference by some simulated summary statistics.
-
-> This vignette can reproduces a part of the simulation study of our submitted paper entitled as follows:
-
-  > Bayesian meta-analysis models to Cross Cancer Genomic Investigation of pleiotropic effects using group structure. 
-
-
-
-**Getting Started**
-
-  > In this vignette we used the following R packages
-- library(MASS)
-- library(mvtnorm)
-- library(invgamma)
-- library(wiqid)
-- library(gdata)
-- library(truncnorm)
-- library(bayesplot)
-- library(abind)
-- library(magrittr)
-
-
-**Example Usage**
-  > Examples from the GCPaBayes can be found in the following:
-
-- CS: This analysis is presented [here](/CSExamp.md)
-- DS: This analysis is presented [here](/DSExamp.md)
-- HS: This analysis is presented [here](/HSExamp.md)
+Here, we will examine two distinct simulated datasets. The first one is based on a constant value for the baseline hazard, so the inverse of the cumulative hazard function is a common method for this purpose. The R code can be found in "simulated_JM1.R", and the simulated data can be found in "long.data_1.RData" and "surv.data_1.RData".
+The longitudinal profiles and KM plot are presented [here](/sim.md). 
+The second one is based on the permutational algorithm using the PermAlgo package. The R code for this method can be found in "simulated_JM2.R", and the simulated data can be found in "long.data_2.RData" and "surv.data_2.RData". 
+The longitudinal profiles and KM plot are presented [here](/sim.md).
