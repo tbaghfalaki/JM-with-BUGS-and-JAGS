@@ -1,11 +1,3 @@
 
-Here, we consider two different simulated data sets. The first one is based on a constant value for baseline hazard, so the inverse of the cumulative hazard function is a common approach for this purpose. The R code can be found in "simulated_JM1.R" and the simulated data can be found in "long.data_1.RData" and "surv.data_1.RData". The second one is based on the permutational algorithm using the PermAlgo package. The R code for this method can be found in "simulated_JM2.R" and the simulated data can be found in "long.data_2.RData" and "surv.data_2.RData". 
+Here, we will examine two distinct simulated datasets. The first one is based on a constant value for the baseline hazard, so the inverse of the cumulative hazard function is a common method for this purpose. The longitudinal profiles and KM plot are presented [here](/sim.md). The R code can be found in "simulated_JM1.R", and the simulated data can be found in "long.data_1.RData" and "surv.data_1.RData". The second one is based on the permutational algorithm using the PermAlgo package. The R code for this method can be found in "simulated_JM2.R", and the simulated data can be found in "long.data_2.RData" and "surv.data_2.RData". The longitudinal profiles and KM plot are presented [here](/sim.md).
 
-
-## The first set of simulated data 
-![](sim1.png)
-
-## The second set of simulated data 
-![](sim2.png)
-![](pressure-1.png)![](pressure-2.png)![](pressure-3.png)![](pressure-4.png)![](pressure-5.png)![](pressure-6.png)![](pressure-7.png)![](pressure-8.png)![](pressure-9.png)![](pressure-10.png)![](pressure-11.png)![](pressure-12.png)
-<img align="left" width="100" height="100" src="sim2.png">
