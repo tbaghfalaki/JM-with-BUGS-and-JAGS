@@ -93,21 +93,12 @@ sink()
 #### Running JAGS
 s <- quantile(st, seq(0.2, .8, length = 4))
 
-delta <- rep(0, n)
-for (i in 1:n) {
-  if (st[i] <= s[1]) (delta[i] <- 1)
-  if (st[i] > s[1] & st[i] <= s[2]) (delta[i] <- 2)
-  if (st[i] > s[2] & st[i] <= s[3]) (delta[i] <- 3)
-  if (st[i] > s[3] & st[i] <= s[4]) (delta[i] <- 4)
-  if (st[i] > s[4]) (delta[i] <- 5)
-}
-table(delta)
-Delta <- class.ind(delta)
+
 
 d.jags <- list(
   n = n, M = M, st = st, W = W, Y = Y, X = X, Z = Z, X1 = X1, X2 = X2,
   death = death, mub = rep(0, 2), V = diag(1, 2), Nb = 2, zeros = rep(0, n),
-  Nbeta = dim(X)[3], Nalpha = ncol(W), delta = Delta, s = s, J = length(s) + 1
+  Nbeta = dim(X)[3], Nalpha = ncol(W),  s = s, J = length(s) + 1
 )
 
 i.jags <- function() {
