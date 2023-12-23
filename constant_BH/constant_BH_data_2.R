@@ -1,7 +1,7 @@
 rm(list = ls())
 library(R2jags)
-load(file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/long.data_2.RData")
-load(file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated data/surv.data_2.RData")
+load(file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated_data/long.data_2.RData")
+load(file = "/Users/taban/Desktop/Taban/joint modeling bugs/Simulated_data/surv.data_2.RData")
 
 # Number of patients and number of longitudinal observations per patient
 n <- length(surv.data$id)
@@ -22,7 +22,7 @@ for (i in 1:n) {
 X1 <- X1[, 1]
 X2 <- X2[, 1]
 
-W <- model.matrix(~ surv.data$w) # Fixed effects
+W <- model.matrix(~ surv.data$w1+surv.data$w2) # Fixed effects
 
 X <- array(1, dim = c(n, max(M), 4)) # Fixed effects
 X[, , 2] <- time
@@ -96,29 +96,31 @@ print(sim)
 
 
 ##### Results ##### 
-> print(sim)
+print(sim)
 Inference for Bugs model at "model_file", fit using jags,
 3 chains, each with 5000 iterations (first 2500 discarded), n.thin = 2
 n.sims = 3750 iterations saved
 mu.vect sd.vect          2.5%           25%           50%           75%         97.5%  Rhat n.eff
-Sigma[1,1]         1.028   0.100         0.844         0.959         1.024         1.093         1.239 1.006   760
-Sigma[2,1]         0.444   0.094         0.259         0.379         0.441         0.509         0.627 1.007   390
-Sigma[1,2]         0.444   0.094         0.259         0.379         0.441         0.509         0.627 1.007   390
-Sigma[2,2]         1.001   0.157         0.717         0.893         0.991         1.099         1.334 1.042    53
-alpha[1]          -2.037   0.149        -2.347        -2.133        -2.033        -1.938        -1.752 1.004   550
-alpha[2]           0.819   0.120         0.585         0.738         0.819         0.899         1.056 1.001  3800
-beta[1]           -0.518   0.073        -0.665        -0.565        -0.519        -0.469        -0.375 1.025   140
-beta[2]            0.560   0.091         0.380         0.499         0.559         0.621         0.735 1.074    32
-beta[3]            0.442   0.055         0.325         0.408         0.443         0.478         0.549 1.053    44
-beta[4]            0.710   0.115         0.475         0.633         0.710         0.793         0.919 1.070    40
-gamma             -0.554   0.092        -0.733        -0.615        -0.553        -0.490        -0.372 1.006   390
-lambda0            0.132   0.020         0.096         0.118         0.131         0.144         0.173 1.004   550
-sigma              0.958   0.033         0.895         0.936         0.957         0.980         1.024 1.003   700
-deviance   100007221.781  48.638 100007131.817 100007188.790 100007220.720 100007254.233 100007319.222 1.000     1
+Sigma[1,1]         1.014   0.099         0.825         0.947         1.010         1.077         1.218 1.002  2400
+Sigma[2,1]         0.455   0.098         0.262         0.389         0.456         0.521         0.643 1.006   390
+Sigma[1,2]         0.455   0.098         0.262         0.389         0.456         0.521         0.643 1.006   390
+Sigma[2,2]         1.169   0.179         0.845         1.043         1.155         1.282         1.553 1.046    50
+alpha[1]          -1.557   0.148        -1.861        -1.655        -1.553        -1.452        -1.289 1.002  1500
+alpha[2]           0.818   0.125         0.576         0.734         0.817         0.900         1.067 1.002  1300
+alpha[3]          -0.971   0.241        -1.454        -1.133        -0.962        -0.809        -0.507 1.002  2200
+beta[1]           -0.420   0.089        -0.589        -0.483        -0.420        -0.355        -0.245 1.043    54
+beta[2]            0.565   0.084         0.399         0.509         0.566         0.622         0.729 1.003   690
+beta[3]            0.525   0.056         0.420         0.487         0.524         0.562         0.639 1.011   190
+beta[4]            0.451   0.121         0.225         0.359         0.453         0.543         0.670 1.050    51
+gamma             -0.370   0.077        -0.522        -0.421        -0.371        -0.318        -0.219 1.002  1500
+lambda0            0.213   0.031         0.155         0.191         0.212         0.234         0.276 1.002  1500
+sigma              0.963   0.033         0.898         0.940         0.961         0.985         1.030 1.004   600
+deviance   100007257.098  48.535 100007164.035 100007224.149 100007256.511 100007289.407 100007352.837 1.000     1
 
 For each parameter, n.eff is a crude measure of effective sample size,
 and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
 
 DIC info (using the rule, pD = var(deviance)/2)
-pD = 1171.7 and DIC = 100008393.5
+pD = 1173.7 and DIC = 100008430.8
 DIC is an estimate of expected predictive error (lower deviance is better).
+> 
