@@ -1,5 +1,1 @@
-
-# Simulated data
-The data is based on a shared random effect model. The R code can be found in "data_generation.R", and the simulated data can be found in "long.data_sre_1.RData" and "surv.data_sre_1.RData".
-The longitudinal profiles and KM plot are presented as follows:
-![](/Figures/srm.png)
+An introduction to the principles of Bayesian joint modeling of longitudinal measurements and time-to-event outcomes, as well as model implementation using the BUGS language syntax. This syntax can be executed directly using OpenBUGS or by using convenient functions to call OpenBUGS and JAGS from R software. All the details of joint models are provided, ranging from simple to more advanced models. The discussion began with the joint modeling of a Gaussian longitudinal marker and time-to-event outcome. The implementation of the Bayesian paradigm of the model is reviewed. The strategies for simulating data from the joint model are also discussed. The details of the paper are provided in Baghfalaki et al. (2024), Joint modeling of longitudinal measurements and time-to-event outcomes using BUGS.
