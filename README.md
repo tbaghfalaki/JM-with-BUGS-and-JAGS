@@ -6,37 +6,36 @@ This page includes the R and BUGS code for the following joint modeling. For mor
 
 ### JM FOR ONE GAUSSIAN LONGITUDINAL MARKER
 #### Simulating data for JM with a Gaussian longitudinal marker 
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Simulated_data.
 
 #### JM with a proportional hazard sub-model with constant baseline hazard
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
 
 #### JM with a proportional hazard sub-model with a Weibull baseline hazard
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Weibull_BH.
 
 #### JM with a proportional hazard sub-model with a piecewise constant baseline hazard
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/constant_BH.
 
 #### JM with a proportional hazard sub-model with a spline baseline hazard
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
 
 #### Considering current value and current slope as association between two sub-models
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/current_slope.
 
 #### A shared random effects model for the association between the two sub-models
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
 
-
 ### JM FOR MULTIVARIATE LONGITUDINAL MARKERS
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/multivariate.
 
 ### JM FOR LONGITUDINAL MEASUREMENTS AND COMPETING RISKS OUTCOME
- The codes can be found at .
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/CR.
 
 ### JM OF ZERO-INFLATED LONGITUDINAL MARKER AND SURVIVAL TIME
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Zero_inflation.
 
 ### REAL DATA ANALYSIS
- The codes can be found at [here](R_code)https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/PBC.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/PBC.
 
 
