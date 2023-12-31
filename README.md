@@ -31,13 +31,13 @@ This page includes the R and BUGS code for the following joint modeling. For mor
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
 
 ### JM FOR LONGITUDINAL MEASUREMENTS AND COMPETING RISKS OUTCOME
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at .
 
 ### JM OF ZERO-INFLATED LONGITUDINAL MARKER AND SURVIVAL TIME
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
 
 ### REAL DATA ANALYSIS
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at [here](https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/PBC)https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/PBC.
 
 
 ####
