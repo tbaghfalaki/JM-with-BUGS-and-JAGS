@@ -6,6 +6,7 @@ This page includes the R and BUGS code for the following joint modeling.
 
 ### JM FOR ONE GAUSSIAN LONGITUDINAL MARKER
 #### Simulating data for JM with a Gaussian longitudinal marker 
+For this ![](https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH)
 
 #### JM with a proportional hazard sub-model with constant baseline hazard
 
