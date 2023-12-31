@@ -9,13 +9,13 @@ This page includes the R and BUGS code for the following joint modeling. For mor
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Simulated_data.
 
 #### JM with a proportional hazard sub-model with constant baseline hazard
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/constant_BH.
 
 #### JM with a proportional hazard sub-model with a Weibull baseline hazard
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Weibull_BH.
 
 #### JM with a proportional hazard sub-model with a piecewise constant baseline hazard
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/constant_BH.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/PC_BH.
 
 #### JM with a proportional hazard sub-model with a spline baseline hazard
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/BS_PH.
