@@ -35,7 +35,7 @@ for (i in 1:n) {
   if (death[i] == 1) ((st_n[i] <- st[i]) & (st_cen[i] <- 0))
 }
 ```
-Also, Listing the following code shows the corresponding BUGS code in this package. 
+Also, the following code shows the corresponding BUGS code in this package. 
 ```{r setup, include=FALSE}
 st_n[i] ~ dweib(nu,mut[i])I(st_cen[i],)
 log(mut[i])<-inprod(alpha[],W[i,])+inprod(b[i,],gamma[])
