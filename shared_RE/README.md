@@ -27,6 +27,17 @@ t[i] ~ dweib(kappa,mut[i])
     log(mut[i])<-inprod(alpha[],W[i,])+inprod(b[i,],gamma[])
     is.censored[i]~dinterval(t[i],c[i])
 ```
-As a comparison of the input for the R2jags and R2OpenBUGS, Listing \ref{cenopen} shows the format of input required for the \texttt{R2OpenBUGS}. Also, Listing \ref{codeopen} shows the corresponding BUGS code in this package. It should be mentioned that, overall, \texttt{R2jags} has a shorter computational time than \texttt{R2OpenBUGS}. 
-All the R codes including a set of generated data under the assumption of the shared random effects model can be accessed at \url{https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/shared_RE}. \\
-This section involves simulating real data and analysing them from a single Gaussian longitudinal marker and time-to-event outcome. To see an illustrative example of such a dataset, please refer to \cite{alvares2021bayesian}. In the following sections, we will expand on joint modeling and provide real datasets for each extension.
+As a comparison of the input for the R2jags and R2OpenBUGS, the following code shows the format of input required for the R2OpenBUGS:
+```{r setup, include=FALSE}
+st_n <- st_cen <- rep(0, n)
+for (i in 1:n) {
+  if (death[i] == 0) ((st_n[i] <- NA) & (st_cen[i] <- st[i]))
+  if (death[i] == 1) ((st_n[i] <- st[i]) & (st_cen[i] <- 0))
+}
+```
+Also, Listing the following code shows the corresponding BUGS code in this package. 
+```{r setup, include=FALSE}
+st_n[i] ~ dweib(nu,mut[i])I(st_cen[i],)
+log(mut[i])<-inprod(alpha[],W[i,])+inprod(b[i,],gamma[])
+```
+
