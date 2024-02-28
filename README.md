@@ -35,7 +35,10 @@ This page includes the R and BUGS code for the following joint modeling. For mor
 ### JM OF ZERO-INFLATED LONGITUDINAL MARKER AND SURVIVAL TIME
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Zero_inflation.
 
+### JM OF LONGITUDINAL MARKER AND SURVIVAL TIME with a CURE FRACTION 
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Applications/JMC
+
 ### REAL DATA ANALYSIS
- The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/PBC.
+ The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Applications
 
 
