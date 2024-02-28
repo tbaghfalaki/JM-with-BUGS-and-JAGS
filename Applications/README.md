@@ -4,3 +4,5 @@ This file contains the R codes for all applications discussed in the paper, cove
 * Joint modeling of multi-marker data and competing risks,
 * Joint modeling of zero-inflated longitudinal outcome and survival time,
 * Joint modeling of longitudinal outcome and survival time with a cure fraction.
+https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Applications/JMC
+* 
