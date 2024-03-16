@@ -39,7 +39,7 @@ This page includes the R and BUGS code for the following joint modeling. For mor
 ### JM OF LONGITUDINAL MARKER AND SURVIVAL TIME with a CURE FRACTION 
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Applications/JMC
 
-### REAL DATA ANALYSIS
+### REAL DATA ANALYSIS (APPLICATIONS)
  The codes can be found at https://github.com/tbaghfalaki/JM-with-BUGS-and-JAGS/tree/main/Applications
 
 
