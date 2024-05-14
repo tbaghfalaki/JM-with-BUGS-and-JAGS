@@ -44,6 +44,6 @@ This page includes the R and BUGS code for the following joint modeling. For mor
 
 
 ### Reference
-Baghfalaki, T., Ganjali, M., Barbieri, A., Hashemi, R. and Jacqmin-Gadda, H. (2024). Joint Modeling of Longitudinal Measurements and Time-to-event Outcomes Using BUGS, https://arxiv.org/abs/2403.07778.
+Baghfalaki, T., Ganjali, M., Barbieri, A. and Jacqmin-Gadda, H. (2024). Joint Modeling of Longitudinal Measurements and Time-to-event Outcomes Using BUGS, https://arxiv.org/abs/2403.07778.
 
 
